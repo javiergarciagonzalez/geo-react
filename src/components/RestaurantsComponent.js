@@ -16,7 +16,6 @@ export default class Restaurants extends React.Component {
     // }
 
     render() {
-
         return <div>I'm a {this.props.type} restaurant!</div>;
     }
 }
