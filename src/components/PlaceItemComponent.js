@@ -3,10 +3,10 @@
 
 import React from 'react';
 
-require('styles//Map.css');
+require('styles/RestaurantList.css');
 
 
-export default class PlacesComponent extends React.Component {
+export default class PlaceItemComponent extends React.Component {
     constructor(props) {
         super(props);
     }

@@ -2,19 +2,20 @@
 
 
 import React from 'react';
-import PlacesComponent from './PlacesComponent';
-require('styles//Map.css');
+import PlaceItemComponent from './PlaceItemComponent';
+require('styles/RestaurantList.css');
 
 
-export default class MapComponent extends React.Component {
+export default class RestaurantListComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {data: null}
+        this.state = { data: null };
      }
 
      componentWillMount() {
 
          let google = window.google && window.google.maps;
+
          if (!google) {
              console.error(// eslint-disable-line no-console
              'Google map api was not found in the page.');
@@ -24,17 +25,14 @@ export default class MapComponent extends React.Component {
          let point = {
              lat: 52.375592,
              lng: 4.895803
-         };
-
-         var request = {
+         },
+         request = {
              location: point,
              radius: '500',
              types: ['restaurants']
-         };
-
-         var map = document.getElementById('map');
-
-         var service = new window.google.maps.places.PlacesService(map);
+         },
+        map = document.getElementById('map'),
+        service = new window.google.maps.places.PlacesService(map);
 
          service.nearbySearch(request, (data) => {
 
@@ -42,7 +40,6 @@ export default class MapComponent extends React.Component {
                  this.setGoogleState(data);
              }
          });
-
      }
 
      componentDidMount() {
@@ -53,7 +50,7 @@ export default class MapComponent extends React.Component {
          if (this.ifMounted) {
              this.setState({ data });
          } else {
-             this.state = { data }
+             this.state = { data };
          }
      }
 
@@ -64,9 +61,9 @@ export default class MapComponent extends React.Component {
             return (<ul id="map">
             {this.state.data.map((listValue) => {
                 if (listValue.opening_hours && listValue.opening_hours.open_now && this.props.status) {
-                    return <PlacesComponent key={listValue.id} name={listValue.name} />;
+                    return <PlaceItemComponent key={listValue.id} name={listValue.name} />;
                 }else if (!this.props.status && !listValue.opening_hours){
-                    return <PlacesComponent key={listValue.id} name={listValue.name} />;
+                    return <PlaceItemComponent key={listValue.id} name={listValue.name} />;
                 }
             })}</ul>);
         }
