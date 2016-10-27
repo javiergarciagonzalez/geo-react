@@ -2,72 +2,75 @@
 
 
 import React from 'react';
-import Places from 'PlacesComponent';
+import PlacesComponent from './PlacesComponent';
 require('styles//Map.css');
 
 
 export default class MapComponent extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {data: null}
      }
 
-     init() {
-       console.log('INIT!!!!');
-       let google = window.google && window.google.maps;
+     componentWillMount() {
 
-       if (!google) {
-          console.error(// eslint-disable-line no-console
-            'Google map api was not found in the page.');
-          return;
-        }
+         let google = window.google && window.google.maps;
+         if (!google) {
+             console.error(// eslint-disable-line no-console
+             'Google map api was not found in the page.');
+             return;
+          }
 
-        // this.google = google;
-
-        let point = {};
-        // if (nagivator.geolocation) {
-        //   console.log('navigator');
-        //   navigator.geolocation.getCurrentPosition(function(position) {
-        //     console.log(position.coords.latitude, position.coords.longitude);
-        //     point = {
-        //       lat: position.coords.latitude,
-        //       lng: position.coords.longitude
-        //     };
-        //   });
-        // }
-        point = {
-          lat: 52.375592,
-          lng: 4.895803
-        };
-
-        var request = {
-           location: point,
-           radius: '500',
-           types: ['restaurants']
+         let point = {
+             lat: 52.375592,
+             lng: 4.895803
          };
 
-        var map = document.getElementById('map');
+         var request = {
+             location: point,
+             radius: '500',
+             types: ['restaurants']
+         };
 
-        var service = new window.google.maps.places.PlacesService(map);
+         var map = document.getElementById('map');
 
-        service.nearbySearch(request, (log) => {
-          console.log(log, 'loguito');
-          this.setPlaces(log);
-        });
+         var service = new window.google.maps.places.PlacesService(map);
+
+         service.nearbySearch(request, (data) => {
+
+             if (data) {
+                 this.setGoogleState(data);
+             }
+         });
+
      }
 
-     setPlaces(log) {
-       console.log('entra en setPlaces', log, '1');
-         this.places = log;
-        console.log(this.places);
+     componentDidMount() {
+         this.ifMounted = true;
      }
 
-
+     setGoogleState (data) {
+         if (this.ifMounted) {
+             this.setState({ data });
+         } else {
+             this.state = { data }
+         }
+     }
 
     render() {
-        // this.init();
-        // console.log(this.places, 'placesprimos');
-        return <ul>
-                <Places/>
-        </ul>;
+
+        if (this.state && this.state.data) {
+
+            return (<ul id="map">
+            {this.state.data.map((listValue) => {
+                if (listValue.opening_hours && listValue.opening_hours.open_now && this.props.status) {
+                    return <PlacesComponent key={listValue.id} name={listValue.name} />;
+                }else if (!this.props.status && !listValue.opening_hours){
+                    return <PlacesComponent key={listValue.id} name={listValue.name} />;
+                }
+            })}</ul>);
+        }
+
+        return <div>Loading...</div>;
     }
 }

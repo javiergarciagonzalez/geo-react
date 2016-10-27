@@ -13,21 +13,9 @@ import CustomTabs from './components/CustomTabsComponent';
 class Application {
     constructor() {
 
-        this.geo = navigator.geolocation.getCurrentPosition(function(position) {
-            return {
-                coords: {
-                    lat: position.coords.latitude,
-                    long: position.coords.longitude
-                }
-            };
-        });
     }
 
     init() {
-
-        // bindAll(this, ['fetchModelData']);
-        console.log('coords', this.geo);
-        this.render();
     }
 
 

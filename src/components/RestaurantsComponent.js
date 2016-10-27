@@ -18,10 +18,9 @@ export default class Restaurants extends React.Component {
     // }
 
     render() {
-        return <div>I'm a {this.props.type} restaurant!
-          <Map init=""/>
-        </div>;
+        let status = this.props.status === 'opened' ? true : false;
+        return (<div>We're {this.props.status} restaurants!
+          <Map status={status}/>
+        </div>);
     }
 }
-
-ReactDOM.render(<Restaurants/>, document.querySelector('.app'));

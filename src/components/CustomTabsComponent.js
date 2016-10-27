@@ -6,46 +6,31 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Restaurants from './RestaurantsComponent';
 require('styles/CustomTabs.css');
 
-class CustomTabsComponent extends React.Component {
+export default class CustomTabsComponent extends React.Component {
     constructor(props) {
         super(props);
         this.prefix = 'Here you can find ';
     }
 
-    handleSelect() {
-    //   console.log('Selected tab: ' + index + ', Last tab: ' + last);
-      return null;
-    }
-
     render() {
-        return <Tabs onSelect={this.handleSelect} selectedIndex={2} >
+        return <Tabs onSelect={this.handleSelect} selectedIndex={0} >
 
                <TabList>
 
-                <Tab>Thai</Tab>
-                <Tab>Italian</Tab>
-                <Tab>Burger</Tab>
+                <Tab>Opened now</Tab>
+                <Tab>Closed now</Tab>
                </TabList>
 
                <TabPanel>
-                 <h2>{this.prefix}Thai food!</h2>
-                 <Restaurants type="thai"/>
+                 <h2>{this.prefix}open restaurants!</h2>
+                 <Restaurants status="opened"/>
                </TabPanel>
                <TabPanel>
-                 <h2>{this.prefix}Italian food!</h2>
-                 <Restaurants type="italian"/>
-               </TabPanel>
-               <TabPanel>
-                 <h2>{this.prefix}Burgers!</h2>
-                 <Restaurants type="burger"/>
+                 <h2>{this.prefix}closed restaurants!</h2>
+                 <Restaurants status="closed"/>
                </TabPanel>
              </Tabs>;
          }
 }
 
 render(<CustomTabsComponent/>, document.querySelector('.app'));
-
-
-// CustomTabsComponent.displayName = 'SrcComponentsCustomTabsComponent';
-
-export default CustomTabsComponent;

@@ -10,21 +10,8 @@
 </head>
 <body>
   <div class="app">APPLICATION CONTENT</div>
- <div id="map"></div>
+  <div id="map"></div>
   <script>__REACT_DEVTOOLS_GLOBAL_HOOK__ = parent.__REACT_DEVTOOLS_GLOBAL_HOOK__</script>
-  <script>
-     var map;
-     console.log(document.getElementById('map'));
-
-     var request = {
-       location: {lat: -34.397, lng: 150.644},
-       radius: '500',
-       types: ['store']
-     };
-
-     service = new google.maps.places.PlacesService(map);
-     service.nearbySearch(request, function (log) {console.log('eeeeey',log);});
-   </script>
   <script type="text/javascript" src="/assets/app.js"></script>
 </body>
 </html>
