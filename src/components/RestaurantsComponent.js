@@ -1,8 +1,10 @@
-'use strict';
+/* jshint esversion:6 */
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 require('styles/Restaurants.css');
+import Map from './MapComponent';
+
 
 
 
@@ -16,7 +18,9 @@ export default class Restaurants extends React.Component {
     // }
 
     render() {
-        return <div>I'm a {this.props.type} restaurant!</div>;
+        return <div>I'm a {this.props.type} restaurant!
+          <Map init=""/>
+        </div>;
     }
 }
 

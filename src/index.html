@@ -6,12 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDfUb1v5mUCDTfzit5GoKFf5rA7nz2bOI&libraries=places"></script>
 </head>
 <body>
   <div class="app">APPLICATION CONTENT</div>
-
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDfUb1v5mUCDTfzit5GoKFf5rA7nz2bOI&callback=initMap" async defer></script>
+ <div id="map"></div>
   <script>__REACT_DEVTOOLS_GLOBAL_HOOK__ = parent.__REACT_DEVTOOLS_GLOBAL_HOOK__</script>
+  <script>
+     var map;
+     console.log(document.getElementById('map'));
+
+     var request = {
+       location: {lat: -34.397, lng: 150.644},
+       radius: '500',
+       types: ['store']
+     };
+
+     service = new google.maps.places.PlacesService(map);
+     service.nearbySearch(request, function (log) {console.log('eeeeey',log);});
+   </script>
   <script type="text/javascript" src="/assets/app.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-'use strict';
+/* jshint esversion:6 */
 
 import React from 'react';
 import { render } from 'react-dom';
@@ -39,7 +39,7 @@ class CustomTabsComponent extends React.Component {
                  <h2>{this.prefix}Burgers!</h2>
                  <Restaurants type="burger"/>
                </TabPanel>
-             </Tabs>
+             </Tabs>;
          }
 }
 
