@@ -8,7 +8,6 @@ export default class Map extends React.Component {
         super(props);
         this.initMap();
         // this.mapModel = new MapModel();
-
     }
 
 
@@ -46,6 +45,8 @@ export default class Map extends React.Component {
                 marker.setPosition(position);
                 console.log('position setted');// eslint-disable-line no-console
                 map.panTo(new window.google.maps.LatLng(position.lat, position.lng));
+
+                this.props.onClick(position);
             });
         }
 

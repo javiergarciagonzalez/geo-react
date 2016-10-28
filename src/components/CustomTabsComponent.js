@@ -10,6 +10,7 @@ export default class CustomTabsComponent extends React.Component {
     constructor(props) {
         super(props);
         this.prefix = 'Here you can find ';
+        this.state = { type: 'cafe' }
     }
 
     render() {
@@ -22,12 +23,12 @@ export default class CustomTabsComponent extends React.Component {
                </TabList>
 
                <TabPanel>
-                 <h2>{this.prefix}open restaurants!</h2>
-                 <TabPlaces status="opened"/>
+                 <h2>{this.prefix}open {this.state.type}s!</h2>
+                 <TabPlaces status="opened" type={this.state.type}/>
                </TabPanel>
                <TabPanel>
-                 <h2>{this.prefix}closed restaurants!</h2>
-                 <TabPlaces status="closed"/>
+                 <h2>{this.prefix}closed {this.state.type}s!</h2>
+                 <TabPlaces status="closed" type={this.state.type}/>
                </TabPanel>
              </Tabs>;
          }

@@ -31,7 +31,7 @@ export default class PlacesListComponent extends React.Component {
          let request = {
              location: this.props.location,
              radius: '500',
-             types: ['restaurant']
+             types: this.props.type
          },
         places = document.getElementById('places'),
         service = new window.google.maps.places.PlacesService(places);
