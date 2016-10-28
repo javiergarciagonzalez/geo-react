@@ -1,11 +1,14 @@
 'use strict';
 import React from 'react';
+// import MapModel from './../model/mapModel';
 require('styles/Map.css');
 
 export default class Map extends React.Component {
     constructor(props) {
         super(props);
         this.initMap();
+        // this.mapModel = new MapModel();
+
     }
 
 
@@ -33,7 +36,7 @@ export default class Map extends React.Component {
             });
 
             map.addListener('click', (e) => {
-                console.log('click on map!');
+                console.log('click on map!');// eslint-disable-line no-console
 
                 var position = {
                     lat: e.latLng.lat(),
@@ -41,14 +44,14 @@ export default class Map extends React.Component {
                 }
 
                 marker.setPosition(position);
-                console.log('position setted');
-                map.panTo(new google.maps.LatLng(position.lat, position.lng));
+                console.log('position setted');// eslint-disable-line no-console
+                map.panTo(new window.google.maps.LatLng(position.lat, position.lng));
             });
         }
 
      }
 
      render() {
-         return <div onChange={this.handleLocationChange} >{this.props.location.lat}</div>;
+         return <div onChange={this.handleLocationChange}>{this.props.location.lat}</div>;
      }
 }

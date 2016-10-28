@@ -3,10 +3,10 @@
 
 import React from 'react';
 import PlaceItemComponent from './PlaceItemComponent';
-require('styles/RestaurantList.css');
+require('styles/PlacesList.css');
 
 
-export default class RestaurantListComponent extends React.Component {
+export default class PlacesListComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = { data: null, location: this.props.location };
@@ -23,7 +23,7 @@ export default class RestaurantListComponent extends React.Component {
             return;
         }
 
-        let map = new window.google.maps.Map(document.getElementById('places'), {
+        new window.google.maps.Map(document.getElementById('places'), {
             center: this.props.location ,
             zoom: 15
         });
@@ -31,7 +31,7 @@ export default class RestaurantListComponent extends React.Component {
          let request = {
              location: this.props.location,
              radius: '500',
-             types: ['restaurants']
+             types: ['restaurant']
          },
         places = document.getElementById('places'),
         service = new window.google.maps.places.PlacesService(places);

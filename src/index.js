@@ -16,7 +16,7 @@ class Application {
     }
 
     render() {
-        console.debug('[App] - Render');
+        console.debug('[App] - Render');// eslint-disable-line no-console
         ReactDOM.render(<CustomTabs />, document.querySelector('.app'));
         // ReactDOM.render(<MapComponent />, document.querySelector('#map'));
     }

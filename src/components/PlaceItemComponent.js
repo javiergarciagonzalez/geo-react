@@ -3,7 +3,7 @@
 
 import React from 'react';
 
-require('styles/RestaurantList.css');
+require('styles/PlacesList.css');
 
 
 export default class PlaceItemComponent extends React.Component {
@@ -12,6 +12,6 @@ export default class PlaceItemComponent extends React.Component {
     }
 
     render() {
-            return <li>{this.props.name}</li>;
+        return <li>{this.props.name}</li>;
     }
 }

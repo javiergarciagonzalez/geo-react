@@ -3,7 +3,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Restaurants from './RestaurantsComponent';
+import TabPlaces from './TabPlacesComponent';
 require('styles/CustomTabs.css');
 
 export default class CustomTabsComponent extends React.Component {
@@ -23,11 +23,11 @@ export default class CustomTabsComponent extends React.Component {
 
                <TabPanel>
                  <h2>{this.prefix}open restaurants!</h2>
-                 <Restaurants status="opened"/>
+                 <TabPlaces status="opened"/>
                </TabPanel>
                <TabPanel>
                  <h2>{this.prefix}closed restaurants!</h2>
-                 <Restaurants status="closed"/>
+                 <TabPlaces status="closed"/>
                </TabPanel>
              </Tabs>;
          }
