@@ -2,13 +2,6 @@ import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CustomTabs from './components/CustomTabsComponent';
-    // import App from './components/Main';
-
-// Render the main component into the dom
-// ReactDOM.render(<CustomTabs/>, document.getElementById('app'));
-
-
-
 
 class Application {
     constructor() {
@@ -22,7 +15,6 @@ class Application {
     render() {
         console.debug('[App] - Render');
         ReactDOM.render(<CustomTabs />, document.querySelector('.app'));
-        // render(<Router history={hashHistory} routes={this.routes} />, document.querySelector('.app'));
     }
 
 }

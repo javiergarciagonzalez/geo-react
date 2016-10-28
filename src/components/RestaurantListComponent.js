@@ -31,8 +31,8 @@ export default class RestaurantListComponent extends React.Component {
              radius: '500',
              types: ['restaurants']
          },
-        map = document.getElementById('map'),
-        service = new window.google.maps.places.PlacesService(map);
+        places = document.getElementById('places'),
+        service = new window.google.maps.places.PlacesService(places);
 
          service.nearbySearch(request, (data) => {
 
@@ -58,7 +58,7 @@ export default class RestaurantListComponent extends React.Component {
 
         if (this.state && this.state.data) {
 
-            return (<ul id="map">
+            return (<ul id="restaurants-list">
             {this.state.data.map((listValue) => {
                 if (listValue.opening_hours && listValue.opening_hours.open_now && this.props.status) {
                     return <PlaceItemComponent key={listValue.id} name={listValue.name} />;
