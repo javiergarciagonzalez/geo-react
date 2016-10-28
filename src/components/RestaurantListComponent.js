@@ -9,25 +9,27 @@ require('styles/RestaurantList.css');
 export default class RestaurantListComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { data: null };
+        this.state = { data: null, location: this.props.location };
      }
 
      componentWillMount() {
 
-         let google = window.google && window.google.maps;
+        this.setState({location: this.getMapLocation()});
+        let google = window.google && window.google.maps;
 
-         if (!google) {
-             console.error(// eslint-disable-line no-console
-             'Google map api was not found in the page.');
-             return;
-          }
+        if (!google) {
+            console.error(// eslint-disable-line no-console
+            'Google map api was not found in the page.');
+            return;
+        }
 
-         let point = {
-             lat: 52.375592,
-             lng: 4.895803
-         },
-         request = {
-             location: point,
+        let map = new window.google.maps.Map(document.getElementById('places'), {
+            center: this.props.location ,
+            zoom: 15
+        });
+
+         let request = {
+             location: this.props.location,
              radius: '500',
              types: ['restaurants']
          },
@@ -52,6 +54,10 @@ export default class RestaurantListComponent extends React.Component {
          } else {
              this.state = { data };
          }
+     }
+
+     getMapLocation() {
+         return this.props.location;
      }
 
     render() {
