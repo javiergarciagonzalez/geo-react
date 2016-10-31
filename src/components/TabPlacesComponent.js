@@ -4,21 +4,21 @@ import React from 'react';
 require('styles/TabPlaces.css');
 import PlacesList from './PlacesListComponent';
 import Map from './Map';
-export default class TabPlaces extends React.Component {
+
+
+// import { handleMapClick } from './../actions/index-actions';
+
+export class TabPlaces extends React.Component {
     constructor(props) {
         super(props);
         this.state = { location: { lat: 52.375592, lng: 4.895803 }, type: 'cafe' };
+
         this.handleMapClick = this.handleMapClick.bind(this);
     }
 
-    handleLocationUpdate(value) {
-        this.setState({ location: value });
-    }
-
-
     handleMapClick(location) {
-        console.log('_+_+_+_+_+_+_+_+_+_', location, this);
-        this.setState({ location });
+    //     console.log('_+_+_+_+_+_+_+_+_+_', location, this);
+    //     this.setState({ location });
     }
 
     render() {

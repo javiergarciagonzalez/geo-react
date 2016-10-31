@@ -15,6 +15,7 @@ export default class PlacesListComponent extends React.Component {
      componentWillMount() {
        console.log('will mount, primo');
         this.setState({location: this.getMapLocation()});
+
         let google = window.google && window.google.maps;
 
         if (!google) {

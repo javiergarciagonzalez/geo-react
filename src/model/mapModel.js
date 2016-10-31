@@ -24,7 +24,7 @@ export default function initMap(props) {
 
             marker.setPosition(position);
             console.log('position setted');// eslint-disable-line no-console
-            map.panTo(new window.google.maps.LatLng(position.lat, position.lng));
+            // map.panTo(new window.google.maps.LatLng(position.lat, position.lng));
 
             props.onClick(position);
         });

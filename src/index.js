@@ -1,24 +1,33 @@
 import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducer from './reducers/location';
 import CustomTabs from './components/CustomTabsComponent';
 import Map from './components/Map';
 
-// import MapComponent from './components/MapComponent';
-
 class Application {
     constructor() {
-        let map = new Map();
-        map.initMap();
+
+
+        console.log('REDUCEEEEEEEEEER', reducer);
+
+        const map = new Map(),
+            initialStatus = { location: null, status: null, type: null },
+            store = createStore(reducer, initialStatus);
     }
 
     init() {
     }
 
     render() {
-        console.debug('[App] - Render');// eslint-disable-line no-console
-        ReactDOM.render(<CustomTabs />, document.querySelector('.app'));
-        // ReactDOM.render(<MapComponent />, document.querySelector('#map'));
+
+        ReactDOM.render(
+            <Provider store={this.store}>
+                <CustomTabs />
+            </Provider>,
+            document.querySelector('.app'));
     }
 
 }
