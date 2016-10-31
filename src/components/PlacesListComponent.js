@@ -13,7 +13,7 @@ export default class PlacesListComponent extends React.Component {
      }
 
      componentWillMount() {
-
+       console.log('will mount, primo');
         this.setState({location: this.getMapLocation()});
         let google = window.google && window.google.maps;
 
@@ -60,10 +60,29 @@ export default class PlacesListComponent extends React.Component {
          return this.props.location;
      }
 
+
+     componentWillReceiveProps(data) {
+       console.log(data, 'eeyyy data');
+       this.setState({ location: data.location });
+
+
+                let request = {
+                    location: this.props.location,
+                    radius: '500',
+                    types: this.props.type
+                },
+               places = document.getElementById('places'),
+               service = new window.google.maps.places.PlacesService(places);
+
+                service.nearbySearch(request, (data) => {
+
+                    if (data) {
+                        this.setGoogleState(data);
+                    }
+                });
+     }
     render() {
-
         if (this.state && this.state.data) {
-
             return (<ul id="restaurants-list">
             {this.state.data.map((listValue) => {
                 if (listValue.opening_hours && listValue.opening_hours.open_now && this.props.status) {

@@ -1,4 +1,4 @@
-'use strict';
+/* jshint esversion:6 */
 import React from 'react';
 // import MapModel from './../model/mapModel';
 require('styles/Map.css');
@@ -40,7 +40,7 @@ export default class Map extends React.Component {
                 var position = {
                     lat: e.latLng.lat(),
                     lng: e.latLng.lng()
-                }
+                };
 
                 marker.setPosition(position);
                 console.log('position setted');// eslint-disable-line no-console

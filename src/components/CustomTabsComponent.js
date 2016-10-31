@@ -10,7 +10,7 @@ export default class CustomTabsComponent extends React.Component {
     constructor(props) {
         super(props);
         this.prefix = 'Here you can find ';
-        this.state = { type: 'cafe' }
+        this.state = { type: 'restaurant', location: null };
     }
 
     render() {
