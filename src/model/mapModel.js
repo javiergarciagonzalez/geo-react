@@ -1,23 +1,32 @@
 import Map from './../components/Map';
 
-export default class ModelMap {
-  constructor(cachedModels = {}) {
-    this.cachedModels = cachedModels;
-    this.models = {
-      'map': new Map()
-    };
-  }
+export default function initMap(props) {
 
-  getData(model = 'map', callback = null) {
-    model = model.toLowerCase();
+    if (props && props.location) {
 
-    console.debug('[App] - Get model: ', model);// eslint-disable-line no-console
-    this.models[model].fetch((data) => {
-      this.cachedModels[model] = this.models[model];
+        let map = new window.google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: props.location
+        });
 
-      if (typeof callback === 'function') {
-        callback(data);
-      }
-    });
-  }
+        var marker = new window.google.maps.Marker({
+            position: props.location,
+            map: map
+        });
+
+        map.addListener('click', (e) => {
+            console.log('click on map!');// eslint-disable-line no-console
+
+            var position = {
+                lat: e.latLng.lat(),
+                lng: e.latLng.lng()
+            };
+
+            marker.setPosition(position);
+            console.log('position setted');// eslint-disable-line no-console
+            map.panTo(new window.google.maps.LatLng(position.lat, position.lng));
+
+            props.onClick(position);
+        });
+    }
 }
