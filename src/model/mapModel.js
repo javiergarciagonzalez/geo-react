@@ -13,7 +13,6 @@ export default function initMap(props) {
         });
 
         map.addListener('click', (e) => {
-            console.log('click on map!');// eslint-disable-line no-console
 
             var position = {
                 lat: e.latLng.lat(),
@@ -21,10 +20,9 @@ export default function initMap(props) {
             };
 
             marker.setPosition(position);
-            console.log('position setted');// eslint-disable-line no-console
             map.panTo(new window.google.maps.LatLng(position.lat, position.lng));
 
-            props.onClick(position);
+            props.mapCallback(position);
         });
     }
 }
