@@ -25,9 +25,10 @@ class CustomTabsComponent extends React.Component {
                     <h2>{this.prefix}open {this.props.type}s!</h2>
                     <TabPlaces status="opened" type={this.props.type} location={this.props.location} mapCallback={this.props.handleMapClick}/>
                 </TabPanel>
+
                 <TabPanel>
                     <h2>{this.prefix}closed {this.props.type}s!</h2>
-                    <TabPlaces status="closed" type={this.props.type} location={this.props.location} test={this.props.test}/>
+                    <TabPlaces status="closed" type={this.props.type} location={this.props.location} mapCallback={this.props.handleMapClick}/>
                 </TabPanel>
             </Tabs>;
          }

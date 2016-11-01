@@ -2,10 +2,10 @@ import { connect } from 'react-redux'
 
 let initialState = {
     location: {
-        lat: 0,
-        lng: 0
+        lat: 52.37259273131223,
+        lng: 4.89815354347229
     },
-    type: 'cafe',
+    type: 'bar',
     status: 'opened'
 }
 

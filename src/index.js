@@ -13,7 +13,7 @@ class Application extends React.Component {
 
     render() {
 
-        const store = createStore(reducer);
+        const store = createStore(locationReducer);
         return (<Provider store={store} >
                             <CustomTabs />
                         </Provider>);

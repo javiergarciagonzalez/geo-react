@@ -12,6 +12,6 @@ export default class PlaceItemComponent extends React.Component {
     }
 
     render() {
-        return <li>{this.props.name}</li>;
+        return <li><img src={this.props.src} style={{width:'40px',height: '40px'}}/>{this.props.name}</li>;
     }
 }

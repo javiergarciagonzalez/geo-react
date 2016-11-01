@@ -30,15 +30,15 @@ export default class PlacesListComponent extends React.Component {
 
          let request = {
              location: this.props.location,
-             radius: '500',
+             radius: '50',
              types: this.props.type
          },
         places = document.getElementById('places'),
         service = new window.google.maps.places.PlacesService(places);
 
          service.nearbySearch(request, (data) => {
-
              if (data) {
+                 console.log(data, 'daaaaaaaaaaaaaaaaaata');
                  this.setGoogleState(data);
              }
          });
@@ -69,7 +69,7 @@ export default class PlacesListComponent extends React.Component {
                 let request = {
                     location: this.props.location,
                     radius: '500',
-                    types: this.props.type
+                    types: [this.props.type]
                 },
                places = document.getElementById('places'),
                service = new window.google.maps.places.PlacesService(places);
@@ -86,7 +86,7 @@ export default class PlacesListComponent extends React.Component {
             return (<ul id="restaurants-list">
             {this.state.data.map((listValue) => {
                 if (listValue.opening_hours && listValue.opening_hours.open_now && this.props.status) {
-                    return <PlaceItemComponent key={listValue.id} name={listValue.name} />;
+                    return <PlaceItemComponent key={listValue.id} name={listValue.name} src={listValue.icon} />;
                 }else if (!this.props.status && !listValue.opening_hours){
                     return <PlaceItemComponent key={listValue.id} name={listValue.name} />;
                 }
