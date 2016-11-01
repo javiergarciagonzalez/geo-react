@@ -13,7 +13,7 @@ export default class PlacesListComponent extends React.Component {
      }
 
      componentWillMount() {
-       console.log('will mount, primo');
+
         this.setState({location: this.getMapLocation()});
         let google = window.google && window.google.maps;
 
@@ -62,7 +62,7 @@ export default class PlacesListComponent extends React.Component {
 
 
      componentWillReceiveProps(data) {
-       console.log(data, 'eeyyy data');
+
        this.setState({ location: data.location });
 
 

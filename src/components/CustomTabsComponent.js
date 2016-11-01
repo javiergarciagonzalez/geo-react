@@ -10,7 +10,13 @@ export default class CustomTabsComponent extends React.Component {
     constructor(props) {
         super(props);
         this.prefix = 'Here you can find ';
-        this.state = { type: 'restaurant', location: null };
+        this.state = { type: 'restaurant', location: { lat: 52.375592, lng: 4.895803 } };
+        this.handleMapClick = this.handleMapClick.bind(this);
+
+    }
+
+    handleMapClick(location) {
+        this.setState({ location });
     }
 
     render() {
@@ -24,11 +30,11 @@ export default class CustomTabsComponent extends React.Component {
 
                <TabPanel>
                  <h2>{this.prefix}open {this.state.type}s!</h2>
-                 <TabPlaces status="opened" type={this.state.type}/>
+                 <TabPlaces status="opened" type={this.state.type} location={this.state.location} onClick={this.handleMapClick}/>
                </TabPanel>
                <TabPanel>
                  <h2>{this.prefix}closed {this.state.type}s!</h2>
-                 <TabPlaces status="closed" type={this.state.type}/>
+                 <TabPlaces status="closed" type={this.state.type} location={this.state.location} onClick={this.handleMapClick}/>
                </TabPanel>
              </Tabs>;
          }

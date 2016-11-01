@@ -1,5 +1,3 @@
-import Map from './../components/Map';
-
 export default function initMap(props) {
 
     if (props && props.location) {
