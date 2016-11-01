@@ -11,20 +11,14 @@ export default class TabPlaces extends React.Component {
         this.handleMapClick = this.handleMapClick.bind(this);
     }
 
-    handleLocationUpdate(value) {
-        this.setState({ location: value });
-    }
-
-
     handleMapClick(location) {
-        console.log('_+_+_+_+_+_+_+_+_+_', location, this);
         this.setState({ location });
     }
 
     render() {
         let status = this.props.status === 'opened' ? true : false;
         return (<div>We're {this.props.status} {this.props.type}s!
-            <Map location={this.state.location} updateLocation={this.handleLocationUpdate} onClick={this.handleMapClick}/>
+            <Map location={this.state.location} onClick={this.handleMapClick}/>
             <PlacesList status={status} location={this.state.location} type={this.props.type} />
         </div>);
     }
