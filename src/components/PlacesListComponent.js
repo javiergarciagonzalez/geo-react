@@ -38,7 +38,7 @@ export default class PlacesListComponent extends React.Component {
 
          service.nearbySearch(request, (data) => {
              if (data) {
-                 console.log(data, 'daaaaaaaaaaaaaaaaaata');
+                 console.log(data, 'daaaaaaaaaaaaaaaaaata'); //jshint ignore:line
                  this.setGoogleState(data);
              }
          });

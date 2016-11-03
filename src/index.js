@@ -2,9 +2,10 @@ import 'core-js/fn/object/assign';
 import React from 'react';
 import { render } from 'react-dom';
 import CustomTabs from './components/CustomTabsComponent';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import { locationReducer } from './reducers/location'
+import { Provider } from 'react-redux';
+import store from './store';
+require('styles/App.css');
+
 
 class Application extends React.Component {
     constructor(props) {
@@ -12,13 +13,11 @@ class Application extends React.Component {
     }
 
     render() {
-
-        const store = createStore(locationReducer);
         return (<Provider store={store} >
                             <CustomTabs />
                         </Provider>);
     }
 }
-
 render(<Application />, document.querySelector('.app'));
+
 window.Application = new Application();

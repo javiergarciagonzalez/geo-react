@@ -15,7 +15,7 @@ export default class TabPlaces extends React.Component {
 
     render() {
         let status = this.props.status === 'opened' ? true : false;
-        return (<div>We're {this.props.status} {this.props.type}s!
+        return (<div>We are {this.props.status} {this.props.type}s!
             <PlacesList status={status} location={this.props.location} type={this.props.type} />
         </div>);
     }

@@ -1,7 +1,6 @@
     /* jshint esversion:6 */
 
 import React from 'react';
-import { render } from 'react-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import TabPlaces from './TabPlacesComponent';
 import { connect } from 'react-redux'
@@ -36,20 +35,15 @@ class CustomTabsComponent extends React.Component {
 
 const mapStateToProps = (store) => {
     return {
-        type: store.type,
-        location: store.location
+        location: store.apiReducer.location
     }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
   handleMapClick: (location) => {
+    console.log('dispatching!', location);
         dispatch(updateLocation(location))
   }
 })
 
-const CustomTabs = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CustomTabsComponent)
-
-export default CustomTabs
+export default connect(mapStateToProps, mapDispatchToProps)(CustomTabsComponent)

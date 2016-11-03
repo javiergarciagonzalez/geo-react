@@ -1,6 +1,6 @@
-import { connect } from 'react-redux'
+import { combineReducers } from 'redux';
 
-let initialState = {
+const initialState = {
     location: {
         lat: 52.37259273131223,
         lng: 4.89815354347229
@@ -9,15 +9,16 @@ let initialState = {
     status: 'opened'
 }
 
-export const locationReducer = (state=initialState, action) => {
-
+function apiReducer(state = initialState, action) {
     switch (action.type) {
-        case 'UPDATE_LOCATION':
-            let newState = Object.assign({}, state, {location: action.location})
-            return newState;
-            break;
-        default:
-            return state;
-            break;
+    case 'MAP_CHANGE_SUCCESS':
+        console.log(action, 'ACTIONNNN');
+        return Object.assign({}, state, { state: action.data });
+    default:
+        return state;
     }
 }
+
+const reducers = combineReducers({ apiReducer });
+
+export default reducers;
