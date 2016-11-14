@@ -35,7 +35,7 @@ export default class PlacesListComponent extends React.Component {
          },
         places = document.getElementById('places'),
         service = new window.google.maps.places.PlacesService(places);
-
+        console.log('REQUESTTT', request);
          service.nearbySearch(request, (data) => {
              if (data) {
                  console.log(data, 'daaaaaaaaaaaaaaaaaata'); //jshint ignore:line
@@ -65,22 +65,22 @@ export default class PlacesListComponent extends React.Component {
 
        this.setState({ location: data.location });
 
+        let request = {
+            location: this.props.location,
+            radius: '500',
+            types: [this.props.type]
+        },
+        places = document.getElementById('places'),
+        service = new window.google.maps.places.PlacesService(places);
 
-                let request = {
-                    location: this.props.location,
-                    radius: '500',
-                    types: [this.props.type]
-                },
-               places = document.getElementById('places'),
-               service = new window.google.maps.places.PlacesService(places);
+        service.nearbySearch(request, (data) => {
 
-                service.nearbySearch(request, (data) => {
-
-                    if (data) {
-                        this.setGoogleState(data);
-                    }
-                });
-     }
+            if (data) {
+              console.log('DATA EN PlacesListComponent', data);
+                this.setGoogleState(data);
+            }
+        });
+    }
     render() {
         if (this.state && this.state.data) {
             return (<ul id="restaurants-list">

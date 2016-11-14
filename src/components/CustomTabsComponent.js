@@ -1,10 +1,10 @@
-    /* jshint esversion:6 */
+/* jshint esversion:6 */
 
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import TabPlaces from './TabPlacesComponent';
-import { connect } from 'react-redux'
-import { updateLocation } from './../actions/index-actions'
+import { connect } from 'react-redux';
+import { updateLocation } from './../actions/index-actions';
 require('styles/CustomTabs.css');
 
 class CustomTabsComponent extends React.Component {
@@ -14,6 +14,7 @@ class CustomTabsComponent extends React.Component {
     }
 
     render() {
+      console.log('rendering CustomTabsComponent');
         return <Tabs onSelect={this.handleSelect} selectedIndex={0} >
                 <TabList>
                     <Tab>Opened now</Tab>
@@ -34,16 +35,19 @@ class CustomTabsComponent extends React.Component {
 }
 
 const mapStateToProps = (store) => {
+    console.log('adding data!'); // jshint ignore:line
     return {
-        location: store.apiReducer.location
-    }
-}
+        location: store.apiReducer.location,
+        type: store.apiReducer.type,
+        status: store.apiReducer.status
+    };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   handleMapClick: (location) => {
-    console.log('dispatching!', location);
-        dispatch(updateLocation(location))
+    console.log('dispatching!', location); // jshint ignore:line
+        dispatch(updateLocation(location));
   }
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(CustomTabsComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(CustomTabsComponent);

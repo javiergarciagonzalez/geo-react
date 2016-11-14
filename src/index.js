@@ -1,3 +1,5 @@
+/* jshint esversion:6 */
+
 import 'core-js/fn/object/assign';
 import React from 'react';
 import { render } from 'react-dom';
