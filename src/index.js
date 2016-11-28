@@ -12,6 +12,15 @@ class Application extends React.Component {
     }
 
     render() {
+<<<<<<< Updated upstream
+=======
+        return (<Provider store={store} >
+                    <CustomTabs {...this.props.location}/>
+                </Provider>);
+    }
+}
+render(<Application />, document.querySelector('.app'));
+>>>>>>> Stashed changes
 
         const store = createStore(locationReducer);
         return (<Provider store={store} >
