@@ -1,10 +1,14 @@
+/* jshint esversion:6 */
+
 import 'core-js/fn/object/assign';
 import React from 'react';
 import { render } from 'react-dom';
 import CustomTabs from './components/CustomTabsComponent';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import { locationReducer } from './reducers/location'
+import { Provider } from 'react-redux';
+import store from './store';
+import { connect } from 'react-redux';
+import { updateLocation } from './actions/index-actions';
+require('styles/App.css');
 
 class Application extends React.Component {
     constructor(props) {
@@ -12,22 +16,34 @@ class Application extends React.Component {
     }
 
     render() {
-<<<<<<< Updated upstream
-=======
         return (<Provider store={store} >
                     <CustomTabs {...this.props.location}/>
                 </Provider>);
     }
 }
 render(<Application />, document.querySelector('.app'));
->>>>>>> Stashed changes
-
         const store = createStore(locationReducer);
         return (<Provider store={store} >
-                            <CustomTabs />
-                        </Provider>);
+                    <CustomTabs {...this.props.location}/>
+                </Provider>);
+    }
+}
+rxender(<Application />, document.querySelector('.app'));
+
+const mapStateToProps = (store) => {
+    return {
+        location: store.apiReducer.location
     }
 }
 
-render(<Application />, document.querySelector('.app'));
+const mapDispatchToProps = (dispatch) => ({
+  handleMapClick: (location) => {
+    console.log('dispatching!', location);
+        dispatch(updateLocation(location))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CustomTabsComponent)
+
+
 window.Application = new Application();
