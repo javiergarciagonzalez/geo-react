@@ -1,23 +1,27 @@
-import { connect } from 'react-redux'
+/* jshint esversion:6 */
 
-let initialState = {
+import { combineReducers } from 'redux';
+
+const initialState = {
     location: {
         lat: 52.37259273131223,
         lng: 4.89815354347229
     },
-    type: 'bar',
+    type: 'cafe',
     status: 'opened'
-}
+};
 
-export const locationReducer = (state=initialState, action) => {
-
+function apiReducer(state = initialState, action) {
     switch (action.type) {
-        case 'UPDATE_LOCATION':
-            let newState = Object.assign({}, state, {location: action.location})
-            return newState;
-            break;
-        default:
-            return state;
-            break;
+    case 'MAP_CHANGE_SUCCESS':
+        console .log(action, 'ACTIONNNN'); // jshint ignore:line
+        return Object.assign({}, state, { state: action.data });
+    default:
+    console.log('DEFAULT ----', state);
+        return state;
     }
 }
+
+const reducers = combineReducers({ apiReducer });
+
+export default reducers;
