@@ -21,14 +21,8 @@ class Application extends React.Component {
                 </Provider>);
     }
 }
+
 render(<Application />, document.querySelector('.app'));
-        const store = createStore(locationReducer);
-        return (<Provider store={store} >
-                    <CustomTabs {...this.props.location}/>
-                </Provider>);
-    }
-}
-rxender(<Application />, document.querySelector('.app'));
 
 const mapStateToProps = (store) => {
     return {
@@ -43,7 +37,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CustomTabsComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(CustomTabs)
 
 
 window.Application = new Application();
