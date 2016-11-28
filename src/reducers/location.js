@@ -17,6 +17,7 @@ function apiReducer(state = initialState, action) {
         console .log(action, 'ACTIONNNN'); // jshint ignore:line
         return Object.assign({}, state, { state: action.data });
     default:
+    console.log('DEFAULT ----', state);
         return state;
     }
 }

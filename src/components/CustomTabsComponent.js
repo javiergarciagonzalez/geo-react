@@ -14,7 +14,6 @@ class CustomTabsComponent extends React.Component {
     }
 
     render() {
-      console.log('rendering CustomTabsComponent');
         return <Tabs onSelect={this.handleSelect} selectedIndex={0} >
                 <TabList>
                     <Tab>Opened now</Tab>
